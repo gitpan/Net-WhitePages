@@ -1,13 +1,9 @@
 package Net::WhitePages;
 
-# ----------------------------------------------------------------------
-# $Id: WhitePages.pm 69 2008-04-02 16:05:11Z dlc $
-# ----------------------------------------------------------------------
-
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '1.0';   # $Date: 2008-04-02 12:05:11 -0400 (Wed, 02 Apr 2008) $
+$VERSION = '1.01';
 
 use JSON;
 use LWP::Simple qw($ua get);
@@ -95,7 +91,7 @@ sub _uri {
     my %p = @_;
     my $uri = URI->new(API_BASE . '/' . $meth . '/' . $self->{ API_VERSION });
 
-    $p{'api_key'} = $self->{ API_KEY };
+    $p{'api_key'} = $self->{ TOKEN };
     $p{'outputtype'} = 'JSON';
     $uri->query_form(%p);
 
