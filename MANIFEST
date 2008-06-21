@@ -4,4 +4,5 @@ MANIFEST
 MANIFEST.SKIP
 README
 t/load.t
+wpfind
 META.yml                                 Module meta-data (added by MakeMaker)

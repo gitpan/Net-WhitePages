@@ -1,17 +1,13 @@
---- #YAML:1.0
-name:                Net-WhitePages
-version:             1.01
-abstract:            ~
-license:             ~
-author:              
-    - darren chamberlain <darren@cpan.org>
-generated_by:        ExtUtils::MakeMaker version 6.44
-distribution_type:   module
-requires:     
-    JSON:                          0.00
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Net-WhitePages
+version:      1.03
+version_from: 
+installdirs:  site
+requires:
     LWP::Simple:                   0.00
     Params::Validate:              0.00
     URI:                           0.00
-meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30_01

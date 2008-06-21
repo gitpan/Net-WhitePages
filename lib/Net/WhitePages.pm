@@ -5,7 +5,6 @@ use vars qw($VERSION);
 
 $VERSION = '1.01';
 
-use JSON;
 use LWP::Simple qw($ua get);
 use Params::Validate qw(validate);
 use URI;
@@ -91,8 +90,11 @@ sub _uri {
     my %p = @_;
     my $uri = URI->new(API_BASE . '/' . $meth . '/' . $self->{ API_VERSION });
 
-    $p{'api_key'} = $self->{ TOKEN };
-    $p{'outputtype'} = 'JSON';
+    my $t = $self->{ TOKEN } ||
+        die "No token defined; can't make a request without a token!\n";
+
+    $p{'api_key'} = $t;
+    $p{'outputtype'} = 'Perl';
     $uri->query_form(%p);
 
     return $uri;
@@ -107,7 +109,7 @@ sub _request {
 
     my $data = get($uri->canonical);
 
-    return jsonToObj($data);
+    return eval($data);
 }
 
 1;
@@ -173,7 +175,7 @@ Please report bugs via the RT queue at https://rt.cpan.org/.
 
 =head1 VERSION
 
-1.0
+1.02
 
 =head1 AUTHOR
 
